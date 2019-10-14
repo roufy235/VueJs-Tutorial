@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+    <!--suppress SpellCheckingInspection -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+
+
+<div id="hello">
+    <input type="text" v-on:input="changeMessage">
+    <p>
+       <b v-once> {{message}}</b>
+    </p>
+    <p>
+        <b>
+            {{ sayHello() }} - <a v-bind:href="link">Google</a>
+        </b>
+    </p>
+    <p>
+        <b v-html="finishedLink"></b>
+    </p>
+</div>
+
+
+
+
+<script>
+    const app = new Vue({
+        el: '#hello',
+        data: {
+            message : 'Hello World!',
+            link: 'https://www.google.com',
+            finishedLink: '<a href="https://www.google.com">Google</a>'
+        },
+        methods: {
+            changeMessage : function (event) {
+                this.message = event.target.value
+            },
+            sayHello : function () {
+                return this.message
+            }
+        }
+    })
+</script>
+</body>
+</html>
